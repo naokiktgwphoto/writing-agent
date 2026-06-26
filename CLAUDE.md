@@ -10,8 +10,9 @@
 
 ## パイプライン
 
-- `pipelines/player-interview.md` — 選手インタビュー（連載形式）
-- `pipelines/game-report.md` — ゲームレポート
+- `pipelines/player-interview.md` — 選手インタビュー・特集（Number Web・4years.・週プレなど）
+- `pipelines/game-report.md` — ゲームレポート（Sporting News・Yahoo Newsなど）
+- `pipelines/analysis.md` — 解説・考察記事（Sportiva：試合後分析・展望）
 
 ## 使い方
 
