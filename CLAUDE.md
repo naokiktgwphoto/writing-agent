@@ -14,19 +14,39 @@
 - `pipelines/game-report.md` — ゲームレポート（Sporting News・Yahoo Newsなど）
 - `pipelines/analysis.md` — 解説・考察記事（Sportiva：試合後分析・展望）
 
-## 使い方（Claude Projectsでの運用）
+## 記事生成の手順
 
-1. Claude Projectsを新規作成する
-2. 以下のファイルをProjectのKnowledgeに追加する：
-   - `skills/writing-basics.md`
-   - `skills/japanese-naturalness.md`
-   - `skills/sports-media-tone.md`
-   - `pipelines/game-report.md`
-   - `pipelines/player-interview.md`
-   - `pipelines/analysis.md`
-3. `SYSTEM_PROMPT.md` の内容をProjectのSystem promptに貼り付ける
-4. 会話で素材（試合記録・インタビュー文字起こし・公式データ）と媒体名を指定して生成する
+素材と媒体を以下のフォーマットで渡すと記事を生成する。
+
+```
+【媒体】
+（媒体名）
+
+【素材：試合記録】
+（試合中の音声メモ・文字起こし）
+
+【素材：インタビュー文字起こし】
+（選手・HCのインタビュー）
+
+【素材：公式データ】
+（ドライブチャート・スタッツ）
+```
+
+素材が揃っていない場合はあるものだけ記入してよい。
+
+## 生成時の必須手順（Claudeへの指示）
+
+記事を生成する際は必ず以下の順番で実行すること：
+
+1. `skills/writing-basics.md` を読む
+2. `skills/japanese-naturalness.md` を読む
+3. `skills/sports-media-tone.md` を読む
+4. 指定された媒体に対応するパイプラインファイルを読む：
+   - 試合レポート（BBM・Sporting News）→ `pipelines/game-report.md`
+   - 選手特集・インタビュー（Number Web・4years.・週プレ・BBM特集）→ `pipelines/player-interview.md`
+   - 解説・考察（Sportiva）→ `pipelines/analysis.md`
+5. パイプラインの出力前チェックリストを実行してから原稿を出力する
 
 ## フィードバックループ
 
-生成後にレビューし、ズレや良かった表現に気づいたら該当するスキルファイルを更新してKnowledgeを再アップロードする。
+生成後にレビューし、ズレや良かった表現に気づいたら該当するスキルファイルを直接編集してルールを更新する。
